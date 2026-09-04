@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cropped Idea</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f4f1eb;
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 32px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* TOP */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #111;
+            border-radius: 50%;
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .2;
+            }
+        }
+
+
+        /* MAIN */
+
+        main {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 0;
+        }
+
+        .logo {
+            width: min(260px, 55vw);
+            margin-bottom: 70px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        .headline {
+            font-size: clamp(48px, 9vw, 125px);
+            font-weight: 800;
+            line-height: .88;
+            letter-spacing: -6px;
+            text-transform: uppercase;
+            max-width: 1000px;
+        }
+
+        .headline span {
+            display: block;
+        }
+
+        .headline .outline {
+            color: transparent;
+            -webkit-text-stroke: 1.5px #111;
+        }
+
+
+        /* LOADING */
+
+        .loader {
+            margin-top: 70px;
+            max-width: 620px;
+        }
+
+        .loader-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .track {
+            width: 100%;
+            height: 8px;
+            border: 1px solid #111;
+            padding: 2px;
+        }
+
+        .bar {
+            width: 0%;
+            height: 100%;
+            background: #111;
+            transition: width .15s linear;
+        }
+
+        .loader-note {
+            margin-top: 13px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+
+        /* BOTTOM */
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            border-top: 1px solid #111;
+            padding-top: 18px;
+        }
+
+        .footer-left {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact {
+            text-align: right;
+        }
+
+        .contact-label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            opacity: .55;
+        }
+
+        .contact a {
+            color: #111;
+            text-decoration: none;
+            font-size: 13px;
+            border-bottom: 1px solid #111;
+            padding-bottom: 2px;
+        }
+
+        .contact a:hover {
+            opacity: .5;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .page {
+                padding: 24px;
+            }
+
+            header {
+                font-size: 9px;
+            }
+
+            main {
+                padding: 50px 0;
+            }
+
+            .logo {
+                width: 190px;
+                margin-bottom: 55px;
+            }
+
+            .headline {
+                font-size: clamp(43px, 14vw, 75px);
+                letter-spacing: -3px;
+            }
+
+            .headline .outline {
+                -webkit-text-stroke: 1px #111;
+            }
+
+            .loader {
+                margin-top: 55px;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+            }
+
+            .contact {
+                text-align: left;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <header>
+
+        <div>
+            CROPPED IDEA
+        </div>
+
+        <div class="status">
+            <div class="dot"></div>
+            <span id="status">BUILDING</span>
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- YOUR LOGO -->
+        <div class="logo">
+            <img src="logo.png" alt="Cropped Idea">
+        </div>
+
+
+        <h1 class="headline">
+
+            <span>We're</span>
+
+            <span class="outline">
+                building
+            </span>
+
+            <span>something.</span>
+
+        </h1>
+
+
+        <div class="loader">
+
+            <div class="loader-top">
+
+                <span>Loading Cropped Idea</span>
+
+                <span id="percentage">00%</span>
+
+            </div>
+
+
+            <div class="track">
+
+                <div
+                    class="bar"
+                    id="bar">
+                </div>
+
+            </div>
+
+
+            <div class="loader-note" id="message">
+                give us a minute.
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-left">
+            Media / Technology / Experiences
+        </div>
+
+
+        <div class="contact">
+
+            <div class="contact-label">
+                For queries
+            </div>
+
+            <a href="mailto:founder@croppedidea.com">
+                founders@croppedidea.com
+            </a>
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+    const bar = document.getElementById("bar");
+    const percentage = document.getElementById("percentage");
+    const message = document.getElementById("message");
+    const status = document.getElementById("status");
+
+    let progress = 0;
+
+    function updateLoader() {
+
+        if (progress < 100) {
+
+            /*
+             * Random speed makes it feel
+             * slightly human instead of
+             * like a generic loading animation.
+             */
+
+            progress += Math.random() * 2.5;
+
+            if (progress > 100) {
+                progress = 100;
+            }
+
+            const rounded = Math.floor(progress);
+
+            bar.style.width = rounded + "%";
+
+            percentage.textContent =
+                String(rounded).padStart(2, "0") + "%";
+
+            setTimeout(updateLoader, 80 + Math.random() * 120);
+
+        } else {
+
+            status.textContent = "ALMOST THERE";
+
+            message.textContent =
+                "okay... maybe a little longer.";
+
+            /*
+             * Small pause before restarting.
+             */
+
+            setTimeout(() => {
+
+                progress = 0;
+
+                status.textContent = "BUILDING";
+
+                message.textContent =
+                    "give us a minute.";
+
+                updateLoader();
+
+            }, 4000);
+        }
+    }
+
+    updateLoader();
+
+</script>
+
+</body>
+</html>
